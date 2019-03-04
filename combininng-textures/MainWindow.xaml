@@ -1,0 +1,63 @@
+﻿<Window x:Class="combininng_textures.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:combininng_textures"
+        mc:Ignorable="d"
+        Title="Combininng Textures" Height="480" Width="680">
+    <Grid Background="#FFA2A2A2">
+        <Border HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
+            <Image x:Name="image_input_red" Stretch="Fill"/>
+        </Border>
+       
+        <Button x:Name="button_select_input_red" AllowDrop="True" Drop="InputRedTexture_Drop" Content="Select" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="InputRedTexture_Click" Height="100" Opacity="0"/>
+        <Button x:Name="button_backgorund_input_red" AllowDrop="True" Drop="InputRedTexture_Drop"  Content="Select" HorizontalAlignment="Left" Margin="60,90,0,0" VerticalAlignment="Top" Width="50" Click="InputRedTexture_Click"/>
+        
+        
+        <Border HorizontalAlignment="Left" Height="100" Margin="10,120,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
+            <Image x:Name="image_input_green" Stretch="Fill" />
+        </Border>
+        <Button x:Name="button_select_input_green" AllowDrop="True" Drop="InputGreenTexture_Drop" Content="Select" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Width="100" Click="InputGreenTexture_Click" Height="100" Opacity="0"/>
+        <Button x:Name="button_backgorund_input_green" AllowDrop="True" Drop="InputGreenTexture_Drop"  Content="Select" HorizontalAlignment="Left" Margin="60,200,0,0" VerticalAlignment="Top" Width="50" Click="InputGreenTexture_Click"/>
+
+        <Border HorizontalAlignment="Left" Height="100" Margin="10,230,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
+            <Image x:Name="image_input_blue" Stretch="Fill" />
+        </Border>
+        <Button x:Name="button_select_input_blue" AllowDrop="True" Drop="InputBlueTexture_Drop" Content="Select" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="100" Click="InputBlueTexture_Click" Height="100" Opacity="0"/>
+        <Button x:Name="button_backgorund_input_blue" AllowDrop="True" Drop="InputBlueTexture_Drop"  Content="Select" HorizontalAlignment="Left" Margin="60,310,0,0" VerticalAlignment="Top" Width="50" Click="InputBlueTexture_Click"/>
+
+        <Border HorizontalAlignment="Left" Height="100" Margin="10,340,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
+            <Image x:Name="image_input_alpha" Stretch="Fill"/>
+        </Border>
+        <Button x:Name="button_select_input_alpha" AllowDrop="True" Drop="InputAlphaTexture_Drop" Content="Select" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="100" Click="InputAlphaTexture_Click" Height="100" Opacity="0"/>
+        <Button x:Name="button_backgorund_input_alpha" AllowDrop="True" Drop="InputAlphaTexture_Drop"  Content="Select" HorizontalAlignment="Left" Margin="60,420,0,0" VerticalAlignment="Top" Width="50" Click="InputAlphaTexture_Click"/>
+
+
+        <Border HorizontalAlignment="Left" Height="100" Margin="120,10,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
+            <Image x:Name="image_red" Stretch="Fill" />
+        </Border>
+        <Label x:Name="label_texture_red" Content="RED" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Foreground="#FFdc3545" FontWeight="Bold"/>
+
+        <Border HorizontalAlignment="Left" Height="100" Margin="120,120,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
+            <Image x:Name="image_green" Stretch="Fill" />
+        </Border>
+        <Label x:Name="label_texture_green" Content="GREEN" HorizontalAlignment="Left" Margin="120,120,0,0" VerticalAlignment="Top" Foreground="#FF28a745" FontWeight="Bold"/>
+
+        <Border HorizontalAlignment="Left" Height="100" Margin="120,230,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
+            <Image x:Name="image_blue" Stretch="Fill" />
+        </Border>
+        <Label x:Name="label_texture_blue" Content="BLUE" HorizontalAlignment="Left" Margin="120,230,0,0" VerticalAlignment="Top" Foreground="#FF007bff" FontWeight="Bold"/>
+        
+        <Border HorizontalAlignment="Left" Height="100" Margin="120,340,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
+            <Image x:Name="image_alpha" Stretch="Fill" />
+        </Border>
+        <Label x:Name="label_texture_alpha" Content="ALPHA" HorizontalAlignment="Left" Margin="120,340,0,0" VerticalAlignment="Top" Foreground="#FFFFFFFF" FontWeight="Bold"/>
+
+        <Border HorizontalAlignment="Left" Height="430" Margin="230,10,0,0" VerticalAlignment="Top" Width="430" Background="Gray">
+            <Image x:Name="image_final" Stretch="Fill" />
+        </Border>
+        
+
+    </Grid>
+</Window>
