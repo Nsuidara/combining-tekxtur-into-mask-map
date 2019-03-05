@@ -38,6 +38,10 @@ namespace combininng_textures
         //private ImageSource proces_blue;
         //private ImageSource proces_alpha;
         byte[] finalImage = null;
+        BitmapImage bitmap_image_red;
+        BitmapImage bitmap_image_green;
+        BitmapImage bitmap_image_blue;
+        BitmapImage bitmap_image_alpha;
 
         private enum CHANNAL {
             RED,
@@ -117,6 +121,38 @@ namespace combininng_textures
             LoadImage(file, CHANNAL.ALPHA);
         }
 
+        private void combobox_red_changed(object sender, SelectionChangedEventArgs e)
+        {
+            if (bitmap_image_red != null)
+            {
+                PreprocessOneImage(bitmap_image_red, CHANNAL.RED);
+            }
+        }
+
+        private void combobox_green_changed(object sender, SelectionChangedEventArgs e)
+        {
+            if (bitmap_image_green != null)
+            {
+                PreprocessOneImage(bitmap_image_green, CHANNAL.GREEN);
+            }
+        }
+
+        private void combobox_blue_changed(object sender, SelectionChangedEventArgs e)
+        {
+            if (bitmap_image_blue != null)
+            {
+                PreprocessOneImage(bitmap_image_blue, CHANNAL.BLUE);
+            }
+        }
+
+        private void combobox_alpha_changed(object sender, SelectionChangedEventArgs e)
+        {
+            if (bitmap_image_alpha != null)
+            {
+                PreprocessOneImage(bitmap_image_alpha, CHANNAL.ALPHA);
+            }
+        }
+
         private void LoadImage(string file, CHANNAL channal)
         {
             BitmapImage img = new BitmapImage(new Uri(file));
@@ -124,15 +160,19 @@ namespace combininng_textures
             {
                 case CHANNAL.RED:
                     image_input_red.Source = img;
+                    bitmap_image_red = img;
                     break;
                 case CHANNAL.GREEN:
                     image_input_green.Source = img;
+                    bitmap_image_green = img;
                     break;
                 case CHANNAL.BLUE:
                     image_input_blue.Source = img;
+                    bitmap_image_blue = img;
                     break;
                 case CHANNAL.ALPHA:
                     image_input_alpha.Source = img;
+                    bitmap_image_alpha = img;
                     break;
             }
             PreprocessOneImage(img, channal);
@@ -167,9 +207,62 @@ namespace combininng_textures
             img.CopyPixels(orgImage, stride, 0);
             int pix = 0;
             int max_pix = img.PixelWidth * img.PixelHeight * 4;
+
+            string selected = "Average RGB = (Red+Green+Blue)/3";
+            switch (channal)
+            {
+                case CHANNAL.BLUE:
+                    selected = this.combo_box_blue.Text;
+                    break;
+                case CHANNAL.GREEN:
+                    selected = this.combo_box_green.Text;
+                    break;
+                case CHANNAL.RED:
+                    selected = this.combo_box_red.Text;
+                    break;
+                case CHANNAL.ALPHA:
+                    selected = this.combo_box_alpha.Text;
+                    break;
+            }
+
             while (pix < max_pix)
             {
-                byte new_color = (byte)(((int)orgImage[pix] + (int)orgImage[pix + 1] + (int)orgImage[pix + 2]) / 3);
+                byte blue = orgImage[pix];
+                byte green = orgImage[pix + 1];
+                byte red = orgImage[pix + 2];
+                byte alpha = orgImage[pix + 3];
+                byte new_color = 0;
+                switch (selected)
+                {
+                    case "Average RGB = (Red+Green+Blue)/3":
+                        new_color = (byte)((red + green + blue) / 3);
+                        break;
+                    case "Average RGBA = (Red+Green+Blue+Alpha)/4":
+                        new_color = (byte)((red + green + blue + alpha) / 4);
+                        break;
+                    case "Average RG = (Red+Green)/2":
+                        new_color = (byte)((red + green) / 2);
+                        break;
+                    case "Average RB = (Red+Blue)/2":
+                        new_color = (byte)((red + blue) / 2);
+                        break;
+                    case "Average GB = (Green+Blue)/2":
+                        new_color = (byte)((green + blue) / 2);
+                        break;
+                    case "Red":
+                        new_color = red;
+                        break;
+                    case "Green":
+                        new_color = green;
+                        break;
+                    case "Blue":
+                        new_color = blue;
+                        break;
+                    case "Alpha":
+                        new_color = alpha;
+                        break;
+                }
+
                 switch (channal)
                 {
                     case CHANNAL.BLUE:
@@ -237,5 +330,7 @@ namespace combininng_textures
             }
             return color;
         }
+
+
     }
 }

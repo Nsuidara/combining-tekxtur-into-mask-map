@@ -38,26 +38,71 @@
             <Image x:Name="image_red" Stretch="Fill" />
         </Border>
         <Label x:Name="label_texture_red" Content="RED" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Foreground="#FFdc3545" FontWeight="Bold"/>
-
+        <ComboBox x:Name="combo_box_red" HorizontalAlignment="Left" Margin="120,88,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="combobox_red_changed">
+            <ComboBoxItem IsSelected="True">Average RGB = (Red+Green+Blue)/3</ComboBoxItem>
+            <ComboBoxItem>Average RGBA = (Red+Green+Blue+Alpha)/4</ComboBoxItem>
+            <ComboBoxItem>Average RG = (Red+Green)/2</ComboBoxItem>
+            <ComboBoxItem>Average RB = (Red+Blue)/2</ComboBoxItem>
+            <ComboBoxItem>Average GB = (Green+Blue)/2</ComboBoxItem>
+            <ComboBoxItem>Red</ComboBoxItem>
+            <ComboBoxItem>Green</ComboBoxItem>
+            <ComboBoxItem>Blue</ComboBoxItem>
+            <ComboBoxItem>Alpha</ComboBoxItem>
+        </ComboBox>
+        
         <Border HorizontalAlignment="Left" Height="100" Margin="120,120,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
             <Image x:Name="image_green" Stretch="Fill" />
         </Border>
         <Label x:Name="label_texture_green" Content="GREEN" HorizontalAlignment="Left" Margin="120,120,0,0" VerticalAlignment="Top" Foreground="#FF28a745" FontWeight="Bold"/>
-
+        <ComboBox x:Name="combo_box_green" HorizontalAlignment="Left" Margin="120,198,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="combobox_green_changed">
+            <ComboBoxItem IsSelected="True">Average RGB = (Red+Green+Blue)/3</ComboBoxItem>
+            <ComboBoxItem>Average RGBA = (Red+Green+Blue+Alpha)/4</ComboBoxItem>
+            <ComboBoxItem>Average RG = (Red+Green)/2</ComboBoxItem>
+            <ComboBoxItem>Average RB = (Red+Blue)/2</ComboBoxItem>
+            <ComboBoxItem>Average GB = (Green+Blue)/2</ComboBoxItem>
+            <ComboBoxItem>Red</ComboBoxItem>
+            <ComboBoxItem>Green</ComboBoxItem>
+            <ComboBoxItem>Blue</ComboBoxItem>
+            <ComboBoxItem>Alpha</ComboBoxItem>
+        </ComboBox>
+        
         <Border HorizontalAlignment="Left" Height="100" Margin="120,230,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
             <Image x:Name="image_blue" Stretch="Fill" />
         </Border>
         <Label x:Name="label_texture_blue" Content="BLUE" HorizontalAlignment="Left" Margin="120,230,0,0" VerticalAlignment="Top" Foreground="#FF007bff" FontWeight="Bold"/>
-        
+        <ComboBox x:Name="combo_box_blue" HorizontalAlignment="Left" Margin="120,308,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="combobox_blue_changed">
+            <ComboBoxItem IsSelected="True">Average RGB = (Red+Green+Blue)/3</ComboBoxItem>
+            <ComboBoxItem>Average RGBA = (Red+Green+Blue+Alpha)/4</ComboBoxItem>
+            <ComboBoxItem>Average RG = (Red+Green)/2</ComboBoxItem>
+            <ComboBoxItem>Average RB = (Red+Blue)/2</ComboBoxItem>
+            <ComboBoxItem>Average GB = (Green+Blue)/2</ComboBoxItem>
+            <ComboBoxItem>Red</ComboBoxItem>
+            <ComboBoxItem>Green</ComboBoxItem>
+            <ComboBoxItem>Blue</ComboBoxItem>
+            <ComboBoxItem>Alpha</ComboBoxItem>
+        </ComboBox>
+
         <Border HorizontalAlignment="Left" Height="100" Margin="120,340,0,0" VerticalAlignment="Top" Width="100" Background="Gray">
             <Image x:Name="image_alpha" Stretch="Fill" />
         </Border>
         <Label x:Name="label_texture_alpha" Content="ALPHA" HorizontalAlignment="Left" Margin="120,340,0,0" VerticalAlignment="Top" Foreground="#FFFFFFFF" FontWeight="Bold"/>
-
+        <ComboBox x:Name="combo_box_alpha" HorizontalAlignment="Left" Margin="120,418,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="combobox_alpha_changed">
+            <ComboBoxItem IsSelected="True">Average RGB = (Red+Green+Blue)/3</ComboBoxItem>
+            <ComboBoxItem>Average RGBA = (Red+Green+Blue+Alpha)/4</ComboBoxItem>
+            <ComboBoxItem>Average RG = (Red+Green)/2</ComboBoxItem>
+            <ComboBoxItem>Average RB = (Red+Blue)/2</ComboBoxItem>
+            <ComboBoxItem>Average GB = (Green+Blue)/2</ComboBoxItem>
+            <ComboBoxItem>Red</ComboBoxItem>
+            <ComboBoxItem>Green</ComboBoxItem>
+            <ComboBoxItem>Blue</ComboBoxItem>
+            <ComboBoxItem>Alpha</ComboBoxItem>
+        </ComboBox>
+        
         <Border HorizontalAlignment="Left" Height="430" Margin="230,10,0,0" VerticalAlignment="Top" Width="430" Background="Gray">
             <Image x:Name="image_final" Stretch="Fill" />
         </Border>
         
+
 
     </Grid>
 </Window>
