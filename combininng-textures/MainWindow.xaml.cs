@@ -73,10 +73,6 @@ namespace combininng_textures
                 {
                     filePath += ".png";
                 }
-                //var encoder = new PngBitmapEncoder();
-                //encoder.Frames.Add(BitmapFrame.Create((BitmapSource)image_final.Source));
-                //using (FileStream stream = new FileStream(filePath, FileMode.Create))
-                //encoder.Save(stream);
 
                 RenderTargetBitmap rtb = new RenderTargetBitmap((int)image_final.ActualWidth, (int)image_final.ActualHeight, 96, 96, PixelFormats.Pbgra32);
                 rtb.Render(image_final);
