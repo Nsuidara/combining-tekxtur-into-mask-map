@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Drawing;
 using Color = System.Windows.Media.Color;
+using System.IO;
 
 namespace combininng_textures
 {
@@ -28,16 +29,9 @@ namespace combininng_textures
             InitializeComponent();
         }
 
-        //private ImageSource input_red;
-        //private ImageSource input_green;
-        //private ImageSource input_blue;
-        //private ImageSource input_alpha;
-
-        //private ImageSource proces_red;
-        //private ImageSource proces_green;
-        //private ImageSource proces_blue;
-        //private ImageSource proces_alpha;
         byte[] finalImage = null;
+        private int PixelWidth;
+        private int PixelHeight;
         BitmapImage bitmap_image_red;
         BitmapImage bitmap_image_green;
         BitmapImage bitmap_image_blue;
@@ -61,6 +55,37 @@ namespace combininng_textures
                 return fileDialog.FileName;
             }
             return null;
+        }
+
+
+        private void SaveTexture_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog folderBrowser = new OpenFileDialog();
+            folderBrowser.ValidateNames = false;
+            folderBrowser.CheckFileExists = false;
+            folderBrowser.CheckPathExists = true;
+            folderBrowser.FileName = "img.png";
+            Nullable<bool> dialogOk = folderBrowser.ShowDialog();
+            if (dialogOk == true)
+            {
+                String filePath = folderBrowser.FileName;
+                if(filePath.IndexOf(".png") < 0)
+                {
+                    filePath += ".png";
+                }
+                //var encoder = new PngBitmapEncoder();
+                //encoder.Frames.Add(BitmapFrame.Create((BitmapSource)image_final.Source));
+                //using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                //encoder.Save(stream);
+
+                RenderTargetBitmap rtb = new RenderTargetBitmap((int)image_final.ActualWidth, (int)image_final.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+                rtb.Render(image_final);
+                FileStream stream = new FileStream(filePath, FileMode.Create);
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(rtb));
+                encoder.Save(stream);
+                stream.Close();
+            }
         }
         private void InputRedTexture_Click(object sender, RoutedEventArgs e)
         {
@@ -201,6 +226,8 @@ namespace combininng_textures
                 finalImage = new byte[rawStride * img.PixelHeight];
             }
 
+            PixelWidth = img.PixelWidth;
+            PixelHeight = img.PixelHeight;
             int stride = img.PixelWidth * 4;
             int size = img.PixelHeight * stride;
             byte[] orgImage = new byte[size];
@@ -306,6 +333,8 @@ namespace combininng_textures
             BitmapSource finalbitmap = BitmapSource.Create(img.PixelWidth, img.PixelHeight, 96, 96, pf, null, finalImage, rawStride);
             image_final.Source = finalbitmap;
         }
+
+
 
         public static Color GetPixelColor(BitmapImage bitmap, int x, int y)
         {
